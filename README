@@ -1,0 +1,35 @@
+= Recache
+Recache is a transparent cache wrapper for Reve, the EVE Online Ruby API library by Lisa Seeyle.
+
+While Reve is a fully Ruby-native library it has (since revision 47 or so) worked in place as a Rails plugin. Recache is a Rails plugin by design and requires Rails to work.
+The cache method Recache uses is based on ActiveRecord and so will work with pretty much any database, including SQLite, Oracle, PostgreSQL, MySQL and so on. All that is required is a Rails project.
+
+=== Installing
+
+To install Recache you just need to install the plugin and then generate a migration to build Recache's required tables.
+ ruby script/plugin install http://code.talkunafraid.co.uk/recache/trunk
+ ruby script/generate recache
+ rake db:migrate
+You can use the SVN externals method for keeping Recache up to date by adding the -x command line switch to the plugin install line.
+You will need Reve installed to use Recache- if Reve is not installed, Recache will throw a ReveError exception.
+
+= Example
+
+Recache is transparent. All you need to do to take advantage of basic functionality is use the Recache module instead of Reve.
+  Reve::API.new(userid,key)
+  # goes to
+  Recache::API.new(userid,key)
+
+Returns should be identical to the Reve documented returns for a given function. All options you pass through Recache will be passed on to Reve.
+
+
+= License
+Recache is distributed under the GNU LGPL. Full license is available in the LICENSE file. To summarise:
+
+The GNU Lesser General Public License is a Free Software license. Like any Free Software license, it grants to you the four following freedoms:
+0. The freedom to run the program for any purpose.
+1. The freedom to study how the program works and adapt it to your needs.
+2. The freedom to redistribute copies so you can help your neighbor.
+3. The freedom to improve the program and release your improvements to the public, so that the whole community benefits.
+
+Bascially- use this however you like, for whatever, be it commercial or not. But share what you do change so others benefit- if you have suggestions then let me know and I'll add it in.
