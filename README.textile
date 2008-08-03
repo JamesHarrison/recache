@@ -26,7 +26,7 @@ h3. Example
 Recache is transparent. All you need to do to take advantage of basic functionality is use the Recache module instead of Reve.
   
   Reve::API.new(userid,key)
-  # is instead written as
+  is instead written as
   Recache::API.new(userid,key)
 
 Returns are identical to the Reve documented returns for a given function. All options you pass through Recache will be passed on to Reve.
