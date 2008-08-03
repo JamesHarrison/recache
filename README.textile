@@ -1,0 +1,43 @@
+h2. Recache
+
+Recache is a transparent cache wrapper for Reve, the EVE Online Ruby API library by Lisa Seeyle.
+
+While Reve is a fully Ruby-native library it has (since revision 47 or so) worked in place as a Rails plugin. Recache is a Rails plugin by design and requires Rails to work.
+The cache method Recache uses is based on ActiveRecord and so will work with pretty much any database, including SQLite, Oracle, PostgreSQL, MySQL and so on. All that is required is a Rails project.
+
+h3. Installing
+
+h4. Get Reve
+
+Install Reve with 'gem install reve'. Reve will pull in hpricot as it's dependency.
+
+h4. Install the Recache plugin
+
+To install Recache you just need to install the plugin and then generate a migration to build Recache's required tables.
+
+ ruby script/plugin install git://github.com/JamesHarrison/recache.git (Rails 2.0.2 and over only- older versions just clone the repository)
+ ruby script/generate recache
+ rake db:migrate
+
+You will need the Reve gem installed to use Recache- if Reve is not installed, Recache will throw a ReveError exception.
+
+h3. Example
+
+Recache is transparent. All you need to do to take advantage of basic functionality is use the Recache module instead of Reve.
+  Reve::API.new(userid,key)
+  # goes to
+  Recache::API.new(userid,key)
+
+Returns are identical to the Reve documented returns for a given function. All options you pass through Recache will be passed on to Reve.
+
+h3. License
+
+Recache is distributed under the GNU LGPL. Full license is available in the LICENSE file. To summarise:
+
+The GNU Lesser General Public License is a Free Software license. Like any Free Software license, it grants to you the four following freedoms:
+0. The freedom to run the program for any purpose.
+1. The freedom to study how the program works and adapt it to your needs.
+2. The freedom to redistribute copies so you can help your neighbor.
+3. The freedom to improve the program and release your improvements to the public, so that the whole community benefits.
+
+Bascially- use this however you like, for whatever, be it commercial or not. But share what you do change so others benefit.
