@@ -2,7 +2,12 @@
 # This library wraps functionality for the EVE-Online API provided by Reve with a transparent caching layer.
 # Author:: James Harrison (Ix Forres) http://www.talkunafraid.co.uk/
 # Copyright:: GNU LGPL 3.0
-
+require 'rubygems'
+begin 
+  require 'reve'
+rescue Exception => e
+  raise ReveError, "Could not load Reve: #{e.inspect}"
+end
 unless Reve
   raise ReveError, "The Reve plugin was not found. Is it installed?"
 end

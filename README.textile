@@ -24,11 +24,18 @@ You will need the Reve gem installed to use Recache- if Reve is not installed, R
 h3. Example
 
 Recache is transparent. All you need to do to take advantage of basic functionality is use the Recache module instead of Reve.
+  
   Reve::API.new(userid,key)
-  # goes to
+  # is instead written as
   Recache::API.new(userid,key)
 
 Returns are identical to the Reve documented returns for a given function. All options you pass through Recache will be passed on to Reve.
+
+h3. Other Features
+
+You can see if the last call was updated from Reve by querying the last_call_updated accessor of the API class.
+
+You can use the "Gatecamper":http://gatecamper.org service by adding your application key as a fourth param when initializing the class.
 
 h3. License
 
